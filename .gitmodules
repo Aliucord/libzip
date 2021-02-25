@@ -1,0 +1,3 @@
+[submodule "libzip/src/main/cpp/zip"]
+	path = libzip/src/main/cpp/zip
+	url = https://github.com/kuba--/zip.git
