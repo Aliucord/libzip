@@ -28,3 +28,15 @@ android {
         }
     }
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            register(project.name, MavenPublication::class.java) {
+                group = "com.github.Aliucord"
+
+                from(components["release"])
+            }
+        }
+    }
+}
