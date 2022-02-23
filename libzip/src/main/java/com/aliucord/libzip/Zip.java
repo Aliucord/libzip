@@ -9,9 +9,9 @@ public class Zip {
     private static native long open(String path, int compression, char mode);
 
     @SuppressWarnings("FieldCanBeLocal")
-    private final long ptr;
+    private final long a;
     public Zip(String path, int compression, char mode) {
-        ptr = open(path, compression, mode);
+        a = open(path, compression, mode);
     }
 
     public native void close();

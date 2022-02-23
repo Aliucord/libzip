@@ -4,12 +4,12 @@
 
 zip_t* getZip(JNIEnv* env, jobject thisObj) {
     jclass cls = env->GetObjectClass(thisObj);
-    jfieldID ptrid = env->GetFieldID(cls, "ptr", "J");
-    return (zip_t*) env->GetLongField(thisObj, ptrid);
+    jfieldID ptrId = env->GetFieldID(cls, "a", "J");
+    return (zip_t*) env->GetLongField(thisObj, ptrId);
 }
 
 unsigned char* toNativeByteArray(JNIEnv* env, jbyteArray array) {
-    int len = env->GetArrayLength (array);
+    int len = env->GetArrayLength(array);
     auto* buf = new unsigned char[len];
     env->GetByteArrayRegion (array, 0, len, reinterpret_cast<jbyte*>(buf));
     return buf;
@@ -93,7 +93,7 @@ jboolean Java_com_aliucord_libzip_Zip_extractEntry(JNIEnv* env, jobject thisObj,
 }
 
 jint Java_com_aliucord_libzip_Zip_getTotalEntries(JNIEnv* env, jobject thisObj) {
-    return zip_total_entries(getZip(env, thisObj));
+    return zip_entries_total(getZip(env, thisObj));
 }
 
 jboolean Java_com_aliucord_libzip_Zip_deleteEntry(JNIEnv* env, jobject thisObj, jstring entry) {
